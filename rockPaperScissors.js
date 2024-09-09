@@ -7,19 +7,25 @@ function getComputerChoice() {
 // Human choice
 function getHumanChoice() {
     let choice = [ "rock", "paper", "scissors"]
+    let humanEntry;
     let text = `What is your choice:
                     0: Rock
                     1: Paper
                     2: Scissors
     Please make a choice between 0 and 2:  `
 
-    let humanEntry = parseInt(prompt(text));
-    return choice[humanEntry]; 
+    do
+    {
+        humanEntry = prompt(text);
+    }
+    while(isNaN(humanEntry));
+     
+    return choice[parseInt(humanEntry)]; 
 }
 
 
 
-let computerChoice = getComputerChoice();
+const computerChoice = getComputerChoice(); 
 console.log(computerChoice);
-let humanChoice = getHumanChoice();
-console.log(humanChoice); 
+const humanChoice = getHumanChoice();
+console.log(humanChoice);  
