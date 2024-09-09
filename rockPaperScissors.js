@@ -1,6 +1,8 @@
+let humanScore, computerScore = 0;
+let choice = [ "rock", "paper", "scissors"]
+
 // Computer's choice
 function getComputerChoice() {
-    let choice = [ "rock", "paper", "scissors"]
     return choice[Math.floor(Math.random()*3)]; 
 }
 
@@ -9,19 +11,26 @@ function getHumanChoice() {
     let choice = [ "rock", "paper", "scissors"]
     let humanEntry;
     let text = `What is your choice:
-                    0: Rock
-                    1: Paper
-                    2: Scissors
-    Please make a choice between 0 and 2:  `
+                    * Rock
+                    * Paper
+                    * Scissors
+    Please make a choice only between those three elements:  `
 
     do
     {
-        humanEntry = prompt(text);
+        humanEntry = prompt(text).toLowerCase();
     }
-    while(isNaN(humanEntry));
+    while(choice.findIndex((data) => (data == humanEntry)) === -1);
      
-    return choice[parseInt(humanEntry)]; 
+    return humanEntry; 
 }
+
+
+
+function playRound(humanChoice, computerChoice) {
+    if(humanChoice > computerChoice) return;
+}
+
 
 
 
