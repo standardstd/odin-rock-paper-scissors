@@ -1,5 +1,5 @@
-let humanScore, computerScore = 0;
-let choice = ["paper", "scissors", "rock"]  //In natural order of winning. Exception are treated separetely
+let humanScore = computerScore = 0;
+let choice = ["paper", "scissors", "rock"]  //In natural order of winning. Exception are treated consequently.
 
 // Computer's choice
 function getComputerChoice() {
@@ -8,7 +8,7 @@ function getComputerChoice() {
 
 // Human choice
 function getHumanChoice() {
-    // let choice = ["paper", "scissors", "rock"]
+    // let choice = ["paper", "scissors", "rock"] 
     let humanEntry;
     let text = `What is your choice:
                     * Rock
@@ -24,8 +24,6 @@ function getHumanChoice() {
 
     return humanEntry;
 }
-
-
 
 function playRound(humanChoice, computerChoice) {
     
@@ -69,10 +67,30 @@ function printRoundWinner (result, winner, looser, tie) {
 }
 
 
+function playGame() {
 
-const computerChoice = getComputerChoice();
-console.log("Computer: " + computerChoice);
-const humanChoice = getHumanChoice();
-console.log("human: " + humanChoice);  
-playRound(humanChoice, computerChoice); 
+    let round = 0;
+    let result;
+    while (round < 5) {
+        const computerChoice = getComputerChoice();
+        console.log("Computer: " + computerChoice);
+        const humanChoice = getHumanChoice();
+        console.log("human: " + humanChoice);
+        playRound(humanChoice, computerChoice);
+        round++;
+    }
+
+    result = ` Human: ${humanScore} + Computer: ${computerScore}`
+ 
+    if (humanScore > computerScore) {
+        console.log ("You win the game!: " + result )
+    } else if (computerScore > humanScore) {
+        console.log ("You loose the game! " + result)
+        
+    } else {
+        console.log ("No one win the game! " + result)
+    }   
+}
+
+playGame();
 
